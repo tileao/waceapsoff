@@ -1,15 +1,16 @@
-# WAC 6800 — EAPS OFF base sem vento
+# EAPS OFF — Geometria exata da Figure 4-8
 
-Esta build usa exclusivamente:
+Este pacote usa exclusivamente:
 - Figure 4-8
-- page-08 / S50-31
+- Page S50-31
 - docs/page-08.png
 
-Escopo desta etapa:
-- cálculo base do envelope principal
-- sem aplicar headwind
-- overlay desenhado na página inteira do RFM
+Arquivos:
+- data/eaps_off_geometry_exact.json
+- docs/page-08-geometry-exact-preview.png
 
-Próximo passo:
-- validar o número do max weight sem vento
-- depois ligar o bloco de headwind
+Escopo desta etapa:
+- retângulo do gráfico principal
+- retângulo do gráfico de headwind
+- grade principal e linha de 0 ft
+- nenhuma referência visual ao Standard ou ao EAPS ON
