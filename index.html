@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WAC 6800 — EAPS OFF base sem vento</title>
+  <meta name="theme-color" content="#07101a">
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,Inter,Segoe UI,sans-serif; background:#07101a; color:#eef3fb; }
+    .wrap { max-width:1100px; margin:0 auto; padding:20px; }
+    .card { background:#0d1724; border:1px solid rgba(140,160,190,.22); border-radius:24px; padding:20px; margin-bottom:18px; box-shadow:0 10px 30px rgba(0,0,0,.18); }
+    h1 { margin:0 0 10px; font-size:36px; }
+    .sub { color:#c6d4e8; line-height:1.5; margin:0 0 14px; }
+    .row { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    label { display:block; font-size:14px; color:#aac0da; margin-bottom:6px; }
+    input { width:100%; padding:14px 14px; border-radius:16px; border:1px solid rgba(140,160,190,.25); background:#08111c; color:#eef3fb; font-size:18px; }
+    .btns { display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+    button { border:0; border-radius:16px; padding:14px 18px; background:#1f7ae0; color:white; font-weight:700; font-size:16px; }
+    button.secondary { background:#243446; }
+    .status { font-size:22px; font-weight:800; margin-bottom:8px; }
+    .muted { color:#b9c8dc; }
+    img, canvas { width:100%; height:auto; display:block; border-radius:18px; background:white; }
+    .ref { margin-top:14px; color:#c6d4e8; line-height:1.6; }
+    @media (max-width:700px) { .row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>EAPS OFF — cálculo base sem vento</h1>
+      <p class="sub">Build de teste usando somente a <strong>Figure 4-8 / page-08 / S50-31</strong>. Nesta etapa, o cálculo faz apenas a leitura do envelope principal, <strong>sem aplicar headwind</strong>.</p>
+      <div class="row">
+        <div><label>Pressure Altitude (ft)</label><input id="pa" inputmode="numeric" placeholder="ex. 0"></div>
+        <div><label>OAT (°C)</label><input id="oat" inputmode="numeric" placeholder="ex. 30"></div>
+        <div><label>Actual Weight (kg)</label><input id="wt" inputmode="numeric" placeholder="ex. 6600"></div>
+      </div>
+      <div class="btns">
+        <button id="run">Check envelope</button>
+        <button id="demo" class="secondary">Demo</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="status" id="statusTitle">Aguardando dados</div>
+      <div class="muted" id="statusText">Preencha altitude, OAT e peso para validar o envelope principal sem vento.</div>
+      <p><strong>Max Weight:</strong> <span id="maxWeight">—</span></p>
+      <p><strong>Margin:</strong> <span id="margin">—</span></p>
+    </div>
+
+    <div class="card">
+      <canvas id="chart"></canvas>
+      <p class="ref">
+        <strong>Gráfico em uso:</strong> Figure 4-8 — Weight Limitations for CAT A Offshore Helideck Procedure, EAPS OFF.<br>
+        <strong>Página:</strong> S50-31 / <code>docs/page-08.png</code><br>
+        <strong>Fonte:</strong> Leonardo AW139 Rotorcraft Flight Manual (RFM), Edition 2, Revision 32.<br>
+        <strong>Observação:</strong> esta build documenta somente a leitura base <em>sem vento</em>.
+      </p>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
